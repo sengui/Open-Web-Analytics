@@ -1828,7 +1828,7 @@ OWA.tracker.prototype = {
     setVisitorId : function( event, callback ) {
 
         var visitor_id =  OWA.getState( 'v', 'vid' );
-        //OWA.debug('vid: '+ visitor_id);
+        OWA.debug('vid: '+ visitor_id);
         if ( ! visitor_id ) {
             var old_vid_test =  OWA.getState( 'v' );
             //OWA.debug('vid: '+ visitor_id);
@@ -1842,11 +1842,12 @@ OWA.tracker.prototype = {
         }
 
         if ( ! visitor_id ) {
-            visitor_id = OWA.util.generateRandomGuid( this.siteId );
+            visitor_id = window.vistorId || OWA.util.generateRandomGuid( this.siteId );
 
-            this.globalEventProperties.is_new_visitor = true;
+            this.globalEventProperties.is_new_visitor = !window.vistorId;
             OWA.debug('Creating new visitor id');
         }
+        OWA.debug('Creating new visitor id ' + visitor_id);
         // set property on event object
         OWA.setState( 'v', 'vid', visitor_id, true );
         this.setGlobalEventProperty( 'visitor_id', visitor_id );

@@ -220,7 +220,7 @@ class owa_reportsRestController extends owa_reportController {
         $sr = owa_coreAPI::entityFactory('base.source_dim');
         $st = owa_coreAPI::entityFactory('base.search_term_dim');
 
-        $db->selectFrom($s->getTableName(), 'session');
+        $db->selectFrom($s->getTableName(), 's');
 
         $db->join(OWA_SQL_JOIN_LEFT_OUTER, $l->getTableName(), 'location', 'location_id');
         $db->join(OWA_SQL_JOIN_LEFT_OUTER, $h->getTableName(), 'host', 'host_id');
@@ -231,7 +231,7 @@ class owa_reportsRestController extends owa_reportController {
         $db->join(OWA_SQL_JOIN_LEFT_OUTER, $sr->getTableName(), 'source', 'source_id');
         $db->join(OWA_SQL_JOIN_LEFT_OUTER, $st->getTableName(), 'search_term', 'referring_search_term_id');
 
-        $db->selectColumn('session.timestamp as session_timestamp, session.is_new_visitor as session_is_new_visitor, session.num_prior_sessions as session_num_prior_visits, session.num_pageviews as session_num_pageviews, session.last_req as session_last_req, session.id as session_id, session.user_name as session_user_name, session.site_id as site_id, session.visitor_id as visitor_id, session.medium as medium, session.ip_address as ip_address');
+        $db->selectColumn('s.timestamp as session_timestamp, s.is_new_visitor as session_is_new_visitor, s.num_prior_sessions as session_num_prior_visits, s.num_pageviews as session_num_pageviews, s.last_req as session_last_req, s.id as session_id, s.user_name as session_user_name, s.site_id as site_id, s.visitor_id as visitor_id, s.medium as medium, s.ip_address as ip_address');
 
         $db->selectColumn('host.host as host_host');
         $db->selectColumn('location.city as location_city, location.country as location_country');
@@ -248,7 +248,7 @@ class owa_reportsRestController extends owa_reportController {
         
         if ( $this->get( 'sessionId' ) ) {
 	        
-	        $db->where( 'session.id', $this->get( 'sessionId' ) );
+	        $db->where( 's.id', $this->get( 'sessionId' ) );
         }
 
         if ( $this->get('siteId') ) {
@@ -256,10 +256,10 @@ class owa_reportsRestController extends owa_reportController {
         }
 
         if ( $this->get('startDate') && $this->get('endDate') ) {
-            $db->where('session.yyyymmdd', array('start' => $this->get('startDate'), 'end' => $this->get('endDate') ), 'BETWEEN');
+            $db->where('s.yyyymmdd', array('start' => $this->get('startDate'), 'end' => $this->get('endDate') ), 'BETWEEN');
         }
 
-        $db->orderBy('timestamp', 'DESC');
+        $db->orderBy('s.timestamp', 'DESC');
 
          // pass limit to rs object if one exists
         $resultsPerPage = $this->get( 'resultsPerPage' ) ?: 20; 
@@ -335,7 +335,7 @@ class owa_reportsRestController extends owa_reportController {
             $db->where('session_id', $this->get( 'sessionId' ) );
         }
 
-        $db->orderBy('timestamp','DESC');
+        $db->orderBy('request.timestamp','DESC');
 
         // pass limit to rs object if one exists
         $resultsPerPage = $this->get( 'resultsPerPage' ) ?: 100; 

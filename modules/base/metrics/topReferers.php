@@ -44,7 +44,7 @@ class owa_topReferers extends owa_metric {
     function calculate() {
         
         $this->db->selectColumn("count(referer.id) as count,
-                                    sum(session.num_pageviews) as page_views,
+                                    sum(s.num_pageviews) as page_views,
                                     url,
                                     page_title,
                                     site_name,
@@ -53,7 +53,7 @@ class owa_topReferers extends owa_metric {
                                     refering_anchortext,
                                     is_searchengine");
                                     
-        $this->db->selectFrom('owa_session', 'session');    
+        $this->db->selectFrom('owa_session', 's');
         $this->db->join(OWA_SQL_JOIN_LEFT_OUTER, 'owa_referer', 'referer', 'referer_id', 'referer.id');        
         $this->db->groupBy('referer.url');        
         $this->db->orderBy('count', $this->getOrder());    
@@ -69,7 +69,7 @@ class owa_topReferers extends owa_metric {
     
         $this->db->selectColumn("count(distinct referer.id) as count");
                                     
-        $this->db->selectFrom('owa_session', 'session');    
+        $this->db->selectFrom('owa_session', 's');
         $this->db->join(OWA_SQL_JOIN_LEFT_OUTER, 'owa_referer', 'referer', 'referer_id', 'referer.id');            
         $this->db->where('is_searchengine', 1, '!=');
         

@@ -36,6 +36,7 @@ class owa_session extends owa_factTable {
 
         // table name
         $this->setTableName('session');
+        $this->setTableAlias('s');
         $this->setSummaryLevel(1);
 
         // set common fact table columns

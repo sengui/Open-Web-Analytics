@@ -876,6 +876,7 @@ if ( ! in_array($item['name'], $this->allMetrics) ) {
                 $data_type = $this->getMetric($k)->getDataType();
             }
             else {
+                $data_type = null;
                 // can't throw exception here as the metrics are sometimes used to geenrate calculated metrics
                 // therefor no meta data is applied as this stage.
                 //throw new Exception($k.' is not a metric or dimension. Check the configuration!');

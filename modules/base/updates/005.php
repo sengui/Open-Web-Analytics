@@ -217,12 +217,12 @@ class owa_base_005_update extends owa_update {
         //populate search term foreign key in session table
         $ret = $db->query(
             "UPDATE 
-                owa_session as session, owa_referer as referer
+                owa_session s, owa_referer referer
             SET
-                session.referring_search_term_id = (CRC32(LOWER(referer.query_terms))) 
+                s.referring_search_term_id = (CRC32(LOWER(referer.query_terms))) 
             WHERE
-                session.referer_id = referer.id and
-                session.referer_id != 0 AND
+                s.referer_id = referer.id and
+                s.referer_id != 0 AND
                 referer.query_terms != ''"
         );
 
@@ -234,11 +234,11 @@ class owa_base_005_update extends owa_update {
         //populate search source in session table
         $ret = $db->query(
             "UPDATE 
-                owa_session as session
+                owa_session s
             SET
-                session.source = 'organic-search'
+                s.source = 'organic-search'
             WHERE
-                session.referring_search_term_id IS NOT null"
+                s.referring_search_term_id IS NOT null"
         );
 
         if (!$ret) {
@@ -249,15 +249,15 @@ class owa_base_005_update extends owa_update {
         //populate search source in session table
         $ret = $db->query(
             "UPDATE 
-                owa_session as session
+                owa_session s
             SET
-                session.source = 'referral'
+                s.source = 'referral'
             WHERE
-                session.referer_id != 0 AND
-                session.referer_id != '' AND
-                session.referer_id IS NOT null AND
-                session.source != 'feed' AND
-                session.source != 'organic-search'"
+                s.referer_id != 0 AND
+                s.referer_id != '' AND
+                s.referer_id IS NOT null AND
+                s.source != 'feed' AND
+                s.source != 'organic-search'"
         );
 
         if (!$ret) {

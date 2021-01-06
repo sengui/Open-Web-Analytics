@@ -47,10 +47,10 @@ define('OWA_DB_PASSWORD', '123456'); // database user's password
  *
  * Change these to different unique phrases.
  */
-define('OWA_NONCE_KEY', 'yournoncekeygoeshere');  
-define('OWA_NONCE_SALT', 'yournoncesaltgoeshere');
-define('OWA_AUTH_KEY', 'yourauthkeygoeshere');
-define('OWA_AUTH_SALT', 'yourauthsaltgoeshere');
+define('OWA_NONCE_KEY', '8!)3yh<hS#c7Y5a^GRV,eph>MKz$eDUhuhSO/tN~xNPn2-Zq.SD;xI9X4R?vVJDJ');  
+define('OWA_NONCE_SALT', 'U{9J3Oi6:B;F)Ty+S-E2M=!o|-DQi8NtvYT1-?.(#qLz_6s<RxQm<mH0c~doa;cz');
+define('OWA_AUTH_KEY', 'Kw8I`tW<s4.f7yY;>Z]gst |!?HM%/T,!#ZF^c^w^L6ny)XeVYlfKN6.!8[R84j#');
+define('OWA_AUTH_SALT', '=t*ge$tKurRT%1d{>1UE3|doBGxR+W253pfv%-L{z72m^(J^tt<DWv`3*kur@H:]');
 
 /** 
  * PUBLIC URL
@@ -59,7 +59,7 @@ define('OWA_AUTH_SALT', 'yourauthsaltgoeshere');
  * Don't forget the slash at the end.
  */
  
-define('OWA_PUBLIC_URL', 'http://domain/path/to/owa/');  
+define('OWA_PUBLIC_URL', 'http://localhost/owa/');  
 
 /** 
  * OWA ERROR HANDLER
@@ -73,7 +73,7 @@ define('OWA_PUBLIC_URL', 'http://domain/path/to/owa/');
  * 'development' - logs al sorts of useful debug to log file.
  */
 
-//define('OWA_ERROR_HANDLER', 'development');
+define('OWA_ERROR_HANDLER', 'development');
 
 /** 
  * LOG PHP ERRORS
@@ -81,7 +81,7 @@ define('OWA_PUBLIC_URL', 'http://domain/path/to/owa/');
  * Log all php errors to OWA's error log file. Only do this to debug.
  */
 
-//define('OWA_LOG_PHP_ERRORS', true);
+define('OWA_LOG_PHP_ERRORS', true);
  
 /** 
  * OBJECT CACHING

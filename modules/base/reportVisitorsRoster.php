@@ -47,8 +47,8 @@ class owa_reportVisitorsRosterController extends owa_reportController {
 
         $db = owa_coreAPI::dbSingleton();
 
-        $db->selectColumn("distinct session.visitor_id as visitor_id, visitor.user_name, visitor.user_email");
-        $db->selectFrom('owa_session', 'session');
+        $db->selectColumn("distinct s.visitor_id as visitor_id, visitor.user_name, visitor.user_email");
+        $db->selectFrom('owa_session', 's');
         $db->join(OWA_SQL_JOIN_LEFT_OUTER, 'owa_visitor', 'visitor', 'visitor_id', 'visitor.id');
 
         $db->where('site_id', $this->getParam('site_id'));
