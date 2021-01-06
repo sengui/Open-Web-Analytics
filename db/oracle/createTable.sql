@@ -901,3 +901,7 @@ CREATE TABLE OWA_VISITOR (
        PRIMARY KEY (id)
 );
 
+insert into owa_user(user_id, password, role, real_name, email_address, temp_passkey, creation_date, last_update_date, api_key) values('admin', '$2y$10$MtiyP85VHEGN5qdsepYaYOxA.t.2GjvoZ16N9uxbV6vpTS9pvjMTu', 'admin', 'default admin', 'admin@ss.com', '6fa59ff6f5cf6195c83cb13554fc4567', 1609931953, 1609931953, '6fa59ff6f5cf6195c83cb13554fc4567');
+insert into owa_configuration values(1, 'a:1:{s:4:"base";a:3:{s:14:"schema_version";i:10;s:9:"is_active";b:1;s:16:"install_complete";b:1;}}');
+commit;
+
