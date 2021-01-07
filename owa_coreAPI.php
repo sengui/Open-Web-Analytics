@@ -118,6 +118,7 @@ class owa_coreAPI {
                 owa_coreAPI::getSetting('base','db_name'),
                 owa_coreAPI::getSetting('base','db_user'),
                 owa_coreAPI::getSetting('base','db_password'),
+                owa_coreAPI::getSetting('base','db_user_alias'),
                 owa_coreAPI::getSetting('base','db_force_new_connections'),
                 owa_coreAPI::getSetting('base','db_make_persistant_connections')
             );

@@ -115,7 +115,7 @@ class owa_db_oracle extends owa_db {
             // get a connection
             $this->connection = oci_connect(
                 $this->getConnectionParam('user'),
-                $this->getConnectionParam('password'),
+                $this->getPassword(),
                 $url
             );
 
@@ -145,6 +145,24 @@ class owa_db_oracle extends owa_db {
             $this->connection_status = true;
             return true;
         }
+    }
+
+    function getPassword(){
+        $user_alias = $this->getConnectionParam('user_alias');
+        if (!empty($user_alias)) {
+            exec("type D:\\apps\\test.txt", $output, $result);
+            if ($result == 0 && !empty($output) && count($output)) {
+                $arr = explode(' ',$output[0]);
+                if (count($arr) ==3 && $arr[0] == '400'){
+                    return $arr[2];
+                } else{
+                    $this->e->alert(sprintf("Getting password failed, user.alias is %s, error message: %s", $user_alias, $output));
+                }
+            } else{
+                $this->e->alert('Getting password failed!');
+            }
+        }
+        return $this->getConnectionParam('password');
     }
 
 

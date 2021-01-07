@@ -194,6 +194,10 @@
             $this->set('base', 'db_password', OWA_DB_PASSWORD);
         }
 
+         if (defined('OWA_DB_USER_ALiAS')) {
+             $this->set('base', 'db_user_alias', OWA_DB_USER_ALiAS);
+         }
+
         /* SET ERROR HANDLER */
         if (defined('OWA_ERROR_HANDLER')) {
             $this->set('base', 'error_handler', OWA_ERROR_HANDLER);

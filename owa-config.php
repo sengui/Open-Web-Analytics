@@ -41,6 +41,7 @@ define('OWA_DB_HOST', 'localhost'); // host name of the server housing the datab
 define('OWA_DB_USER', 'iszdba'); // database user
 define('OWA_DB_PORT', '1521'); // port of database
 define('OWA_DB_PASSWORD', 'iszdba'); // database user's password
+define('OWA_DB_USER_ALiAS', 'iszdba'); // database user's password
 
 /**
  * AUTHENTICATION KEYS AND SALTS
