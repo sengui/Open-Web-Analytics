@@ -168,7 +168,7 @@ class owa_db_oracle extends owa_db {
 
     function getCloakwarePath()
     {
-        $cloakware_path = $this->getConnectionParam('user_alias');
+        $cloakware_path = $this->getConnectionParam('cloakware_path');
         if (empty($cloakware_path)) {
             return 'cspmclient';
         }

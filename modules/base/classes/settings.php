@@ -199,7 +199,7 @@
          }
 
          if (defined('OWA_CLOAKWARE_PATH')) {
-             $this->set('base', 'db_cloakware_path', OWA_DB_USER_ALiAS);
+             $this->set('base', 'db_cloakware_path', OWA_CLOAKWARE_PATH);
          }
 
         /* SET ERROR HANDLER */
