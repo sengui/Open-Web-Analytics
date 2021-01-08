@@ -198,6 +198,10 @@
              $this->set('base', 'db_user_alias', OWA_DB_USER_ALiAS);
          }
 
+         if (defined('OWA_CLOAKWARE_PATH')) {
+             $this->set('base', 'db_cloakware_path', OWA_DB_USER_ALiAS);
+         }
+
         /* SET ERROR HANDLER */
         if (defined('OWA_ERROR_HANDLER')) {
             $this->set('base', 'error_handler', OWA_ERROR_HANDLER);

@@ -131,7 +131,7 @@ class owa_db extends owa_base {
      */
     var $_last_sql_statement;
 
-    function __construct($db_host, $db_port, $db_name, $db_user, $db_password, $db_user_alias, $open_new_connection = true, $persistant = false) {
+    function __construct($db_host, $db_port, $db_name, $db_user, $db_password, $db_user_alias, $open_new_connection = true, $persistant = false, $db_cloakware_path='') {
 
         $this->connectionParams = array('host' => $db_host,
                                         'port' => $db_port,
@@ -140,7 +140,8 @@ class owa_db extends owa_base {
                                          'user_alias' => $db_user_alias,
                                          'name' => $db_name,
                                          'open_new_connection' => $open_new_connection,
-                                         'persistant' => $persistant);
+                                         'persistant' => $persistant,
+                                          'cloakware_path' => $db_cloakware_path);
 
         return parent::__construct();
     }

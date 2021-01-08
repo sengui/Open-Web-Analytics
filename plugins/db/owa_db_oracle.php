@@ -150,7 +150,8 @@ class owa_db_oracle extends owa_db {
     function getPassword(){
         $user_alias = $this->getConnectionParam('user_alias');
         if (!empty($user_alias)) {
-            exec("type D:\\apps\\test.txt", $output, $result);
+            $this->e->alert(sprintf("Getting password with user.alias is %s", $user_alias));
+            exec(sprintf("%s %s", $this->getCloakwarePath(), $user_alias), $output, $result);
             if ($result == 0 && !empty($output) && count($output)) {
                 $arr = explode(' ',$output[0]);
                 if (count($arr) ==3 && $arr[0] == '400'){
@@ -163,6 +164,15 @@ class owa_db_oracle extends owa_db {
             }
         }
         return $this->getConnectionParam('password');
+    }
+
+    function getCloakwarePath()
+    {
+        $cloakware_path = $this->getConnectionParam('user_alias');
+        if (empty($cloakware_path)) {
+            return 'cspmclient';
+        }
+        return $cloakware_path;
     }
 
 

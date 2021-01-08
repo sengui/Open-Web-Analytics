@@ -107,6 +107,7 @@ class owa_installConfigController extends owa_installController {
         owa_coreAPI::setSetting('base', 'db_user', OWA_DB_USER);
         owa_coreAPI::setSetting('base', 'db_password', OWA_DB_PASSWORD);
         owa_coreAPI::setSetting('base', 'db_user_alias', OWA_DB_USER_ALiAS);
+        owa_coreAPI::setSetting('base', 'db_cloakware_path', OWA_CLOAKWARE_PATH);
 
         // Check DB connection status
         $db = owa_coreAPI::dbSingleton();
